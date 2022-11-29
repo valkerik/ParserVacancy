@@ -7,7 +7,6 @@
 Локация - Controller, method - scan();
 
 Пока реализован сбор с: 
-
 https://hh.ru/
 https://career.habr.com/
 
