@@ -3,7 +3,6 @@ package parser.model;
 import parser.vo.Vacancy;
 
 import java.net.MalformedURLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Provider {
@@ -17,7 +16,7 @@ public class Provider {
         this.strategy = strategy;
     }
 
-    public List<Vacancy> getJavaVacancies(String searchString){
+    public List<Vacancy> getJavaVacancies(String searchString) {
         try {
             return strategy.getVacancies(searchString);
         } catch (MalformedURLException e) {

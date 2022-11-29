@@ -11,9 +11,9 @@ public class Controller {
 
     private Provider[] providers;
 
-    public Controller(Provider ... providers) {
+    public Controller(Provider... providers) {
 
-        if(providers.length ==0){
+        if (providers.length == 0) {
             throw new IllegalArgumentException();
         }
         this.providers = providers;
@@ -27,12 +27,12 @@ public class Controller {
     }
 
     public void scan() {
-       List<Vacancy> vacancyList = new ArrayList<>();
+        List<Vacancy> vacancyList = new ArrayList<>();
         for (Provider provider : providers) {
             vacancyList.addAll(provider.getJavaVacancies("Russia"));
         }
 
         System.out.println(vacancyList.size());
-        
+
     }
 }

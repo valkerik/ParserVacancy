@@ -11,7 +11,7 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HabrCareerStrategy implements Strategy{
+public class HabrCareerStrategy implements Strategy {
     private static final String URL_FORMAT = "https://career.habr.com/vacancies?q=java+%s&items_on_page=20&page=%d";
 
     @Override
@@ -21,30 +21,37 @@ public class HabrCareerStrategy implements Strategy{
         Document document = null;
         do {
 
-            try {document = getDocument(searchString, page);} catch (IOException e) {e.printStackTrace();}
-
+            try {
+                document = getDocument(searchString, page);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             Elements dataQa = document.select("[class=vacancy-card]");
-            if(dataQa.isEmpty()){break;}
+
+            if (dataQa.isEmpty()) {
+                break;
+            }
 
             for (Element element : dataQa) {
 
                 Vacancy vacancy = new Vacancy();
 
                 vacancy.setSiteName("https://career.habr.com/ " + "  страница сайта=" + page);
-                vacancy.setTitle(element.getElementsByAttributeValue("class","vacancy-card__title").text());
-                vacancy.setUrl("https://career.habr.com/"+element.getElementsByAttributeValue("class", "vacancy-card__title-link").attr("href"));
-                vacancy.setCity(element.getElementsByAttributeValue("class","vacancy-card__meta").text());
-                vacancy.setCompanyName(element.getElementsByAttributeValue("class","vacancy-card__company").text());
-                vacancy.setSalary(element.getElementsByAttributeValue("class","vacancy-card__salary").text());
+                vacancy.setTitle(element.getElementsByAttributeValue("class", "vacancy-card__title").text());
+                vacancy.setUrl("https://career.habr.com/" + element.getElementsByAttributeValue("class", "vacancy-card__title-link").attr("href"));
+                vacancy.setCity(element.getElementsByAttributeValue("class", "vacancy-card__meta").text());
+                vacancy.setCompanyName(element.getElementsByAttributeValue("class", "vacancy-card__company").text());
+                vacancy.setSalary(element.getElementsByAttributeValue("class", "vacancy-card__salary").text());
 
                 vacancyList.add(vacancy);
-
             }
             page++;
-            if(page>1){break;}  //TODO останавливаем на 2 странице (по 25 вакансий со страницы)
+            if (page > 1) {
+                break;
+            }  //TODO останавливаем на 2 странице (по 25 вакансий со страницы)
         } while (true);
 
-           vacancyList.forEach(vacancy -> System.out.println(vacancy));
+        vacancyList.forEach(vacancy -> System.out.println(vacancy));
         return vacancyList;
     }
 
