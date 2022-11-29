@@ -44,7 +44,7 @@ public class HHStrategy implements Strategy {
             if(page>5){break;}  //TODO останавливаем на 5 странице (по 20 вакансий со страницы)
         } while (true);
 
-     //   vacancyList.forEach(vacancy -> System.out.println(vacancy));
+        vacancyList.forEach(vacancy -> System.out.println(vacancy));
         return vacancyList;
     }
 
