@@ -37,7 +37,7 @@ public class HHStrategy implements Strategy {
                 Vacancy vacancy = new Vacancy();
 
                 vacancy.setSiteName("https://hh.ru/" + "  страница сайта=" + page);
-                vacancy.setTitle(element.getElementsByAttributeValue("data-qa", "vacancy-serp__vacancy-title").text());
+                vacancy.setTitle(element.getElementsByAttributeValue("data-qa", "serp-item__title").text());
                 vacancy.setUrl(element.getElementsByAttributeValue("data-qa", "serp-item__title").attr("href"));
                 vacancy.setCity(element.getElementsByAttributeValue("data-qa", "vacancy-serp__vacancy-address").text());
                 vacancy.setCompanyName(element.getElementsByAttributeValue("data-qa", "vacancy-serp__vacancy-employer").text());
