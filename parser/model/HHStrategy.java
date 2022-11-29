@@ -5,19 +5,13 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import parser.vo.Vacancy;
-
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 public class HHStrategy implements Strategy {
 
     private static final String URL_FORMAT = "https://hh.ru/search/vacancy?text=java+%s&items_on_page=20&page=%d";
-
-
-
 
     @Override
     public List<Vacancy> getVacancies(String searchString)  {
@@ -36,7 +30,7 @@ public class HHStrategy implements Strategy {
 
                 Vacancy vacancy = new Vacancy();
 
-                vacancy.setSiteName("hh.ru/" + "page=" + page);
+                vacancy.setSiteName("https://hh.ru/" + "  страница сайта=" + page);
                 vacancy.setTitle(element.getElementsByAttributeValue("data-qa", "vacancy-serp__vacancy-title").text());
                 vacancy.setUrl(element.getElementsByAttributeValue("data-qa", "serp-item__title").attr("href"));
                 vacancy.setCity(element.getElementsByAttributeValue("data-qa", "vacancy-serp__vacancy-address").text());
