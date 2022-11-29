@@ -9,7 +9,8 @@ public class Aggregator {
     public static void main(String[] args) {
         Provider providerHabrCareer = new Provider(new HabrCareerStrategy());
         Provider providerHH = new Provider(new HHStrategy());
-        Controller controller = new Controller(providerHH);
+        Controller controller = new Controller(providerHH, providerHabrCareer);
+
         controller.scan();
     }
 }
