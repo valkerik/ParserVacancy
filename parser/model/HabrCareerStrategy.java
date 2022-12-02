@@ -15,7 +15,7 @@ public class HabrCareerStrategy implements Strategy {
     private static final String URL_FORMAT = "https://career.habr.com/vacancies?q=java+%s&items_on_page=20&page=%d";
 
     @Override
-    public List<Vacancy> getVacancies(String searchString) throws MalformedURLException {
+    public List<Vacancy> getVacancies(String searchString) {
         List<Vacancy> vacancyList = new ArrayList<>();
         int page = 0;
         Document document = null;
